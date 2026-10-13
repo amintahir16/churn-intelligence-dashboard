@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --color-ink: #0b1220;
+  --color-ink-2: #334155;
+  --color-muted: #64748b;
+  --color-line: #e5e7eb;
+  --color-line-2: #eef0f3;
+  --color-canvas: #f7f8fa;
+  --color-panel: #ffffff;
+
+  --color-churn: #e5484d;
+  --color-churn-soft: #fdecec;
+  --color-keep: #3e63dd;
+  --color-keep-soft: #edf1fd;
+  --color-warn: #d97706;
+  --color-warn-soft: #fef5e7;
+  --color-ok: #12a26b;
+  --color-ok-soft: #e8f7f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: #c7d2fe;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 11px;
+  fill: #64748b;
+}
+
+.recharts-wrapper *:focus {
+  outline: none;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--color-ink) var(--fill, 50%), #e5e7eb var(--fill, 50%));
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: white;
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+  transition: transform 150ms;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: white;
+  border: 2px solid var(--color-ink);
+}
+input[type="range"]:focus-visible {
+  outline: 2px solid var(--color-keep);
+  outline-offset: 4px;
+}
+
+.fade-in {
+  animation: fade-in 280ms ease-out both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d4d8de;
+  border-radius: 9999px;
+}
