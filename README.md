@@ -4,6 +4,8 @@ An end-to-end churn analysis: data audit, statistical analysis, model selection,
 
 **Open `dashboard/dist/index.html` in any browser** — it is a single self-contained file (no server, no internet needed).
 
+![Executive summary](docs/images/overview.png)
+
 ## Headline findings
 
 | | |
@@ -14,8 +16,8 @@ An end-to-end churn analysis: data audit, statistical analysis, model selection,
 
 1. **High-value customers with repeated service issues always churn.** Service calls ≥ 6 and lifetime value in the top quartile → 100% churn (4,124 customers, 29% of churners, 51% of lost LTV). 1,600+ active high-value customers sit at exactly 5 calls today.
 2. **Under-25s who don't use discounts always churn.** Age ≤ 24 and discount usage < 30% → 100% churn; above 30% usage the same cohort churns at the base rate.
-3. **Everyone else follows a disengagement gradient** — cart abandonment above ~70%, low email engagement, few purchases, long recency.
-4. **Demographics and geography don't matter** (Cramér's V ≤ 0.03) and were dropped from the model after an ablation test.
+3. **Everyone else follows a disengagement gradient** — cart abandonment above ~75%, low email engagement, few purchases, long recency.
+4. **Demographics and geography don't matter** (Cramér's V ≤ 0.014) and were dropped from the model after an ablation test.
 5. **Missing data is a signal** — customers with no recorded session length or email open rate churn at ~41%.
 
 Linear models reach only AUC 0.77 versus 0.93 for boosted trees; a complexity ladder attributes +0.10 AUC to non-linear thresholds and +0.05 to feature interactions.
@@ -35,6 +37,35 @@ Linear models reach only AUC 0.77 versus 0.93 for boosted trees; a complexity la
 | At-risk customers | 400 highest-risk active customers with reasons, talking points, CSV export |
 | What-if simulator | The real model running in the browser with exact TreeSHAP — move sliders, watch risk respond |
 | Methodology | Pipeline, validation design, limitations |
+
+## Screenshots
+
+### Churn anatomy — two deterministic rules, interaction heatmap, surrogate tree
+![Churn anatomy](docs/images/anatomy.png)
+
+### What-if simulator — the real model scoring live in the browser with exact TreeSHAP
+![What-if simulator](docs/images/simulator.png)
+
+### Model performance — leaderboard, ROC/PR, calibration, gains, ablation
+![Model performance](docs/images/model.png)
+
+### Explainability — global SHAP, beeswarm, dependence curves
+![Explainability](docs/images/explain.png)
+
+### Driver explorer — effect sizes, churn curves with 95% CIs, correlations
+![Driver explorer](docs/images/drivers.png)
+
+### Decision lab — profit-optimal threshold from business assumptions
+![Decision lab](docs/images/decision.png)
+
+### At-risk customers — prioritised list with per-customer explanations
+![At-risk customers](docs/images/atrisk.png)
+
+### Segments — behavioural personas and risk × value matrix
+![Segments](docs/images/segments.png)
+
+### Data quality — missingness as a signal, anomalies, decision log
+![Data quality](docs/images/quality.png)
 
 ## Reproduce
 
